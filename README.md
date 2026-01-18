@@ -1,13 +1,13 @@
-# Dev Container Templates & Features
+# Dev Container Feature: Git Host Credentials
 
-This repository provides both **Templates** and **Features** for Dev Containers.
+A Dev Container Feature that installs Git and SSH client to enable seamless credential bridging from your host VS Code environment.
 
-## Features
+Works with Alpine, Debian, Ubuntu, RHEL, Fedora, and Arch-based containers.
 
-### Git Host Credentials
-Installs Git and SSH client to enable seamless credential bridging from your host VS Code environment. Works with Alpine, Debian, Ubuntu, RHEL, Fedora, and Arch-based containers.
+## Usage
 
-**Usage in any devcontainer.json:**
+Add this feature to any `devcontainer.json`:
+
 ```json
 {
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
@@ -17,21 +17,13 @@ Installs Git and SSH client to enable seamless credential bridging from your hos
 }
 ```
 
-Or reference it by repository path:
-```json
-{
-  "features": {
-    "ghcr.io/hypest/devcontainer-github-user/git-host-credentials": {}
-  }
-}
-```
+## How to Add in VS Code
 
-## Templates
-
-### Alpine Git User
-A minimal Alpine environment pre-configured to use your host's Git and SSH credentials.
-
-**Custom Template ID:** `ghcr.io/hypest/devcontainer-github-user/alpine-git-user`
+1. Open the Command Palette (`F1` or `Ctrl+Shift+P`)
+2. Run: **Dev Containers: Configure Container Features**
+3. Search for "Git Host Credentials" or enter the feature ID: `ghcr.io/hypest/devcontainer-github-user/git-host-credentials`
+4. Select it and rebuild your container
 
 ## Publishing
-This repository uses GitHub Actions to automatically publish templates and features to GitHub Container Registry (GHCR) on every push to `main`.
+
+This feature is automatically published to GitHub Container Registry (GHCR) on every push to `main` via GitHub Actions.
