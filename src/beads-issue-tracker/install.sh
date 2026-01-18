@@ -60,6 +60,10 @@ if [ "$1" = "--run-doctor" ] || [ "${RUN_DOCTOR}" = "true" ]; then
     echo 'Y' | bd doctor --fix || echo "Warning: Doctor check had issues"
 fi
 
+# Sync with remote
+echo "Syncing Beads with remote..."
+bd sync || echo "Warning: Could not sync with remote (maybe no remote is configured yet)"
+
 echo "Beads setup complete!"
 echo ""
 echo "Quick start:"
