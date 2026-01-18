@@ -1,0 +1,36 @@
+{
+  "id": "beads-issue-tracker",
+  "version": "1.0.0",
+  "name": "Beads Issue Tracker",
+  "description": "Installs Beads - a distributed, git-backed graph issue tracker designed for AI agents and developers",
+  "documentationURL": "https://github.com/steveyegge/beads",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of Beads to install (use 'latest' for the most recent version)"
+    },
+    "installHooks": {
+      "type": "boolean",
+      "default": true,
+      "description": "Install Git hooks for Beads"
+    },
+    "runDoctor": {
+      "type": "boolean",
+      "default": true,
+      "description": "Run 'bd doctor --fix' after installation to validate setup"
+    },
+    "socketPath": {
+      "type": "string",
+      "default": "/tmp/bd.sock",
+      "description": "Path for the Beads daemon socket"
+    }
+  },
+  "containerEnv": {
+    "BD_SOCKET": "${socketPath}"
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils",
+    "ghcr.io/devcontainers/features/git"
+  ]
+}
