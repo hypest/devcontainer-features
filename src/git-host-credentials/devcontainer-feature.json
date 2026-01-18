@@ -1,7 +1,9 @@
 {
     "id": "git-host-credentials",
     "version": "1.0.0",
-    "name": "Git Host Credentials",
-    "description": "Installs Git and SSH client to enable seamless credential bridging from the host VS Code environment.",
+    "name": "Git Credential Bridge",
+    "description": "Automatically bridges your host's Git and SSH credentials into the container. Your GitHub user logged in VS Code becomes your git user - push, pull, and clone without reconfiguring.",
+    "documentationURL": "https://github.com/hypest/devcontainer-features#readme",
+    "keywords": ["git", "github", "credentials", "ssh", "authentication", "host"],
     "options": {}
 }

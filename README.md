@@ -1,6 +1,10 @@
-# Dev Container Feature: Git Host Credentials
+# Dev Container Features
 
-A Dev Container Feature that installs Git and SSH client to enable seamless credential bridging from your host VS Code environment.
+A collection of Dev Container Features for enhancing your development environment.
+
+## Git Credential Bridge
+
+Automatically bridges your host's Git and SSH credentials into the container. Your GitHub user logged in VS Code becomes your git user - push, pull, and clone without reconfiguring.
 
 Works with Alpine, Debian, Ubuntu, RHEL, Fedora, and Arch-based containers.
 
@@ -12,7 +16,7 @@ Add this feature to any `devcontainer.json`:
 {
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
-    "ghcr.io/hypest/devcontainer-github-user/git-host-credentials:1": {}
+    "ghcr.io/hypest/devcontainer-features/git-host-credentials:1": {}
   }
 }
 ```
@@ -21,7 +25,7 @@ Add this feature to any `devcontainer.json`:
 
 1. Open the Command Palette (`F1` or `Ctrl+Shift+P`)
 2. Run: **Dev Containers: Configure Container Features**
-3. Search for "Git Host Credentials" or enter the feature ID: `ghcr.io/hypest/devcontainer-github-user/git-host-credentials`
+3. Search for "Git Credential Bridge" or enter the feature ID: `ghcr.io/hypest/devcontainer-features/git-host-credentials`
 4. Select it and rebuild your container
 
 ## Publishing
