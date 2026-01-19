@@ -75,8 +75,23 @@ bd sync || echo "Warning: Could not sync with remote (maybe no remote is configu
 echo "Beads setup complete!"
 echo ""
 echo "Quick start:"
-echo "  bd ready              # Find available work"
-echo "  bd show <id>          # View issue details"
-echo "  bd update <id> --status in_progress  # Claim work"
-echo "  bd close <id>         # Complete work"
-echo "  bd sync               # Sync with git"
+  echo "  bd ready              # Find available work"
+  echo "  bd show <id>          # View issue details"
+  echo "  bd update <id> --status in_progress  # Claim work"
+  echo "  bd close <id>         # Complete work"
+  echo "  bd sync               # Sync with git"
+EOF
+
+chmod +x /usr/local/bin/beads-setup
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "✓ Beads feature installed successfully!"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "To complete setup after cloning your repository, run:"
+echo "  beads-setup"
+echo ""
+echo "Or add this to your devcontainer.json postCreateCommand:"
+echo "  \"postCreateCommand\": \"beads-setup\""
+echo ""
