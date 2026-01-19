@@ -28,6 +28,7 @@ echo "BD_SOCKET set to: ${SOCKET_PATH}"
 # Note: Migration and hooks will be handled in postCreateCommand since they require
 # the repository to be cloned and available
 
+# Create a setup script that will run after the repository is cloned
 cat << 'EOF' > /usr/local/bin/beads-setup
 #!/bin/bash
 # Beads post-clone setup script
@@ -43,9 +44,16 @@ if ! git rev-parse --git-dir > /dev/null 2>&1; then
     exit 0
 fi
 
-# Run migrations
-echo "Running Beads migrations..."
-bd migrate || echo "Note: Migration may have issues if .beads directory doesn't exist yet"
+# Initialize database if it doesn't exist
+if [ ! -f ".beads/beads.db" ]; then
+    echo "Initializing Beads database..."
+    echo 'Y' | bd init || echo "Warning: Could not initialize database"
+else
+    echo "Beads database already exists, running migrations..."
+    bd migrate || echo "Note: Migration may have issues"
+fi
+
+# Update repository ID
 bd migrate --update-repo-id || true
 
 # Install hooks if requested
@@ -72,18 +80,3 @@ echo "  bd show <id>          # View issue details"
 echo "  bd update <id> --status in_progress  # Claim work"
 echo "  bd close <id>         # Complete work"
 echo "  bd sync               # Sync with git"
-EOF
-
-chmod +x /usr/local/bin/beads-setup
-
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "✓ Beads feature installed successfully!"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo "To complete setup after cloning your repository, run:"
-echo "  beads-setup"
-echo ""
-echo "Or add this to your devcontainer.json postCreateCommand:"
-echo "  \"postCreateCommand\": \"beads-setup\""
-echo ""
